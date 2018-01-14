@@ -1,0 +1,16 @@
+<div class="menu" [ngClass]="{'auth-form-showed': authFormShowed}">
+
+  <button class="github-auth" (click)="showAuthForm()">
+    <img src="../../../assets/social-github.png" alt="">
+    <span>войти</span>
+  </button>
+
+  <div #form class="github-auth-form">
+    <input type="text" #username (input)="validateForm(username)" (keyup.enter)="auth(username.value)">
+    <button class="auth" (click)="auth(username.value)">вход</button>
+  </div>
+
+  <a routerLink="/where-to-begin" routerLinkActive="active">С чего начать?</a>
+  <a routerLink="/component" routerLinkActive="active">Компонент</a>
+  <a routerLink="/service" routerLinkActive="active">Сервис</a>
+</div>

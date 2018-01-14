@@ -1,0 +1,24 @@
+@import '~sass/variables';
+
+.header{
+  font-size: 38px;
+  font-family: 'Roboto Slab', cursive;
+  text-align: center;
+  height: 78px;
+  padding: 28px 14px 5px 14px;
+  .title {
+    width: auto;
+    background: $third-color;
+    color: $second-font-color;
+    padding: 0 5px;
+  }
+}
+
+
+
+
+@media only screen and (min-width: 768px) {
+  .header{
+    font-size:30px;
+  }
+}

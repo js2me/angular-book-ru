@@ -1,0 +1,21 @@
+@import '~sass/variables';
+
+.app-wrapper{
+  height: 100%;
+  width: 100%;
+}
+
+.page-content{
+  background: $main-color;
+  transition: padding 150ms ease;
+  padding: 0 20%;
+  min-height: 256px;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .page-content{
+    padding: 0 26%;
+  }
+}
