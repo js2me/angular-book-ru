@@ -1,7 +1,8 @@
-<div class="app-wrapper">
+<div class="app-wrapper" [ngClass]="{'auth': authService.ActiveUser !== null}">
   <header></header>
   <menu></menu>
   <div class="page-content">
     <router-outlet></router-outlet>
   </div>
+
 </div>

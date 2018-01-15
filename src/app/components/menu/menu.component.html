@@ -1,16 +1,37 @@
-<div class="menu" [ngClass]="{'auth-form-showed': authFormShowed}">
+<div class="menu" [ngClass]="{'auth-form-showed': authFormShowed, 'auth': authService.ActiveUser !== null}">
 
   <button class="github-auth" (click)="showAuthForm()">
     <img src="../../../assets/social-github.png" alt="">
     <span>войти</span>
   </button>
 
-  <div #form class="github-auth-form">
-    <input type="text" #username (input)="validateForm(username)" (keyup.enter)="auth(username.value)">
-    <button class="auth" (click)="auth(username.value)">вход</button>
-  </div>
+  <div *ngIf="authService.ActiveUser !== null; then userAuth else userNotAuth"></div>
+  <ng-template #userAuth>
+    <div class="user-info">
+      <img src={{authService.ActiveUser.avatar_url}} alt="" (click)="showHideUserPhoto(true)">
+      <span>{{authService.ActiveUser.login}}</span>
+      <button class="auth" (click)="auth()">выход</button>
+    </div>
+  </ng-template>
+  <ng-template #userNotAuth>
+    <div #form class="github-auth-form">
+      <input type="text" #username (input)="validateForm(username)" (keyup.enter)="auth(username)"
+             placeholder="enter username...">
+      <button class="auth" (click)="auth(username)">вход</button>
+    </div>
+  </ng-template>
+
 
   <a routerLink="/where-to-begin" routerLinkActive="active">С чего начать?</a>
   <a routerLink="/component" routerLinkActive="active">Компонент</a>
   <a routerLink="/service" routerLinkActive="active">Сервис</a>
+</div>
+
+<div *ngIf="authService.ActiveUser !== null && showFullUserPhoto" class="user-photo">
+  <div class="image-wrapper">
+    <div class="background-image" [ngStyle]="{'background':('white url('+authService.ActiveUser.avatar_url+')')}">
+    </div>
+    <button class="close" (click)="showHideUserPhoto(false)"></button>
+    <img src={{authService.ActiveUser.avatar_url}} alt="">
+  </div>
 </div>

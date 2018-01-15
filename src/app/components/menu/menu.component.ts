@@ -8,13 +8,18 @@ import {AuthService} from '../../services/auth/auth-service.service';
 })
 export class MenuComponent implements OnInit {
   authFormShowed = false;
+  showFullUserPhoto = false;
   usernameInputRegExp = new RegExp(/((?!.*(-){2,}.*)[a-z0-9][a-z0-9-]{0,38}[a-z0-9])/);
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
   showAuthForm() {
     this.authFormShowed = !this.authFormShowed;
+  }
+
+  showHideUserPhoto(show) {
+    this.showFullUserPhoto = show;
   }
 
   validateForm(username: HTMLInputElement) {
@@ -26,8 +31,12 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  auth(username: string) {
-    this.authService.getUser(username);
+  auth(username: HTMLInputElement) {
+    if (this.authService.ActiveUser === null) {
+      this.authService.getUser(username.value);
+    } else {
+      this.authService.ActiveUser = null;
+    }
   }
 
   ngOnInit() {
