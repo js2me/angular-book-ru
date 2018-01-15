@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Rx';
 import User from '../../models/user';
@@ -13,8 +13,17 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  getUser(username: string): Observable<User> {
-    return this.http.get<User>(`${this.API_URL}/users/${username}`);
+  getUser(username: string) {
+    this.http.get<User>(`${this.API_URL}/users/${username}`).subscribe((user: User) => {
+        console.log(user);
+      },
+      (exception: HttpErrorResponse) => {
+        if (exception.error instanceof Error) {
+          console.log('Client-side error occured.');
+        } else {
+          console.log('Server-side error occured.');
+        }
+      });
   }
 
 }
