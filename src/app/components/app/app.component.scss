@@ -5,17 +5,23 @@
   width: 100%;
 }
 
-.page-content{
+.page-wrapper{
   background: $main-color;
   transition: padding 150ms ease;
-  padding: 0 20%;
+  padding: 0 21%;
   min-height: 256px;
 }
 
 
 
 @media only screen and (max-width: 1000px) {
-  .page-content{
+  .page-wrapper{
     padding: 0 26%;
   }
 }
+@media only screen and (max-width: 892px) {
+  .page-wrapper{
+    padding: 0 29%;
+  }
+}
+

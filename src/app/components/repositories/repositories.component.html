@@ -1,0 +1,13 @@
+<div class="page repositories">
+  <div class="title">
+    <span>Мои репозитории</span>
+  </div>
+  <div class="page-content">
+      <div class="repositories-list">
+        <div *ngFor="let repo of repoService.Repositories;even as isEven; odd as isOdd;" class="repository" [ngClass]="{'is-private':repo.private,'is-even':isEven,'is-odd':isOdd}">
+          <label class="repo-name">{{repo.name}}</label>
+          <label class="repo-language">{{repo.language}}</label>
+        </div>
+      </div>
+  </div>
+</div>

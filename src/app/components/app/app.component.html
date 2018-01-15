@@ -1,8 +1,9 @@
 <div class="app-wrapper" [ngClass]="{'auth': authService.ActiveUser !== null}">
   <header></header>
   <menu></menu>
-  <div class="page-content">
+  <div class="page-wrapper">
     <router-outlet></router-outlet>
   </div>
 
+  <photo-viewer></photo-viewer>
 </div>

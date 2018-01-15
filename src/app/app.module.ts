@@ -5,13 +5,17 @@ import {AppRoutes} from './app.routes';
 import {AppComponent} from './components/app/app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {MenuComponent} from './components/menu/menu.component';
-import {WhereToBeginComponent} from './components/where-to-begin/where-to-begin.component';
-import {ComponentInfoComponent} from './components/component-info/component-info.component';
+import {WhatIsThatComponent} from './components/what-is-that/what-is-that.component';
+import {RepositoriesComponent} from './components/repositories/repositories.component';
 import {ServiceInfoComponent} from './components/service-info/service-info.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {AuthService} from './services/auth/auth-service.service';
 import {GithubAuthInterceptor} from './interceptors/GithubAuthInterceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PhotoViewerComponent } from './components/photo-viewer/photo-viewer.component';
+import {PhotoViewerService} from './services/photo-viewer/photo-viewer.service';
+import {AuthGuardService} from './services/auth/auth-guard.service';
+import {RepoService} from './services/repo/repo-service.service';
 
 
 
@@ -20,10 +24,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    WhereToBeginComponent,
-    ComponentInfoComponent,
+    WhatIsThatComponent,
+    RepositoriesComponent,
     ServiceInfoComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PhotoViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   providers: [
     AuthService,
+    RepoService,
+    AuthGuardService,
+    PhotoViewerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GithubAuthInterceptor,

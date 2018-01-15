@@ -2,7 +2,7 @@
 
 .header{
   font-size: 38px;
-  font-family: 'Roboto Slab', cursive;
+  font-family: $title-font-family;
   text-align: center;
   height: 78px;
   padding: 28px 14px 5px 14px;
@@ -18,7 +18,7 @@
 
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   .header{
     font-size:30px;
   }

@@ -8,7 +8,7 @@
   <div *ngIf="authService.ActiveUser !== null; then userAuth else userNotAuth"></div>
   <ng-template #userAuth>
     <div class="user-info">
-      <img src={{authService.ActiveUser.avatar_url}} alt="" (click)="showHideUserPhoto(true)">
+      <img src={{authService.ActiveUser.avatar_url}} alt="" (click)="showFullImage(authService.ActiveUser.avatar_url)">
       <span>{{authService.ActiveUser.login}}</span>
       <button class="auth" (click)="auth()">выход</button>
     </div>
@@ -22,16 +22,9 @@
   </ng-template>
 
 
-  <a routerLink="/where-to-begin" routerLinkActive="active">С чего начать?</a>
-  <a routerLink="/component" routerLinkActive="active">Компонент</a>
+  <a routerLink="/what-is-that" routerLinkActive="active" class="only-not-auth">Что это?</a>
+  <a routerLink="/repositories" routerLinkActive="active">Репозитории</a>
   <a routerLink="/service" routerLinkActive="active">Сервис</a>
 </div>
 
-<div *ngIf="authService.ActiveUser !== null && showFullUserPhoto" class="user-photo">
-  <div class="image-wrapper">
-    <div class="background-image" [ngStyle]="{'background':('white url('+authService.ActiveUser.avatar_url+')')}">
-    </div>
-    <button class="close" (click)="showHideUserPhoto(false)"></button>
-    <img src={{authService.ActiveUser.avatar_url}} alt="">
-  </div>
-</div>
+

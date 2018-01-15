@@ -1,0 +1,8 @@
+<div *ngIf="photoViewerService.pictureUrl" class="photo-viewer">
+  <div class="image-wrapper">
+    <div class="background-image" [ngStyle]="{'background':('white url('+photoViewerService.pictureUrl+')')}">
+    </div>
+    <button class="close" (click)="photoViewerService.hideFullImage()"></button>
+    <img src={{photoViewerService.pictureUrl}} alt="">
+  </div>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WhereToBeginComponent } from './where-to-begin.component';
+import { PhotoViewerComponent } from './photo-viewer.component';
 
-describe('WhereToBeginComponent', () => {
-  let component: WhereToBeginComponent;
-  let fixture: ComponentFixture<WhereToBeginComponent>;
+describe('PhotoViewerComponent', () => {
+  let component: PhotoViewerComponent;
+  let fixture: ComponentFixture<PhotoViewerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WhereToBeginComponent ]
+      declarations: [ PhotoViewerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WhereToBeginComponent);
+    fixture = TestBed.createComponent(PhotoViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

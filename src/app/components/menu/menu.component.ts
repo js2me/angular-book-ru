@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth-service.service';
+import {PhotoViewerService} from "../../services/photo-viewer/photo-viewer.service";
 
 @Component({
   selector: 'menu',
@@ -11,15 +12,15 @@ export class MenuComponent implements OnInit {
   showFullUserPhoto = false;
   usernameInputRegExp = new RegExp(/((?!.*(-){2,}.*)[a-z0-9][a-z0-9-]{0,38}[a-z0-9])/);
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private photoViewerService: PhotoViewerService) {
   }
 
   showAuthForm() {
     this.authFormShowed = !this.authFormShowed;
   }
 
-  showHideUserPhoto(show) {
-    this.showFullUserPhoto = show;
+  showFullImage(pictureUrl: string) {
+    this.photoViewerService.showFullImage(pictureUrl);
   }
 
   validateForm(username: HTMLInputElement) {
@@ -35,7 +36,8 @@ export class MenuComponent implements OnInit {
     if (this.authService.ActiveUser === null) {
       this.authService.getUser(username.value);
     } else {
-      this.authService.ActiveUser = null;
+      this.authService.logout()
+      this.showAuthForm();
     }
   }
 
